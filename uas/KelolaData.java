@@ -1,6 +1,6 @@
 public interface KelolaData {
-    void tambahSiswa(Siswa siswa);
-    void ubahSiswa(String nis, String namaBaru);
-    void hapusSiswa(String nis);
-    void tampilSemuaSiswa();
+    void tambahSiswa(Sekolah sekolah, Siswa siswa);
+    void ubahSiswa(Sekolah sekolah, String nis, Siswa siswaBaru);
+    void hapusSiswa(Sekolah sekolah, String nis);
+    void tampilSemuaSiswa(Sekolah sekolah);
 }
