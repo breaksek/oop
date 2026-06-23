@@ -21,12 +21,6 @@ public class Siswa extends Orang {
         this.kelas = kelas;
     }
 
-/*
-    public void setNama(String nama){
-        this.nama = nama;
-    }
-*/
-
     @Override
     public void tampilInfo() {
         System.out.println(
