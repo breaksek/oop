@@ -1,52 +1,28 @@
 import java.util.ArrayList;
 
-public class Sekolah implements KelolaData {
-
+public class Sekolah {
     private String namaSekolah;
     private ArrayList<Siswa> daftarSiswa;
 
     public Sekolah(String namaSekolah) {
         this.namaSekolah = namaSekolah;
-        daftarSiswa = new ArrayList<>();
+        this.daftarSiswa = new ArrayList<>();
+        inisialisasiDataSiswa();
     }
 
-    @Override
-    public void tambahSiswa(Siswa siswa) {
-        daftarSiswa.add(siswa);
+    private void inisialisasiDataSiswa() {
+        this.daftarSiswa.add(new SiswaReguler("101", "Andi Wijaya", "Jl. Mawar No. 12", "XI-A", 500000));
+        this.daftarSiswa.add(new SiswaReguler("102", "Budi Santoso", "Jl. Melati No. 5", "XI-A", 500000));
+        this.daftarSiswa.add(new SiswaReguler("103", "Citra Lestari", "Jl. Dahlia No. 44", "XII-B", 550000));
+        this.daftarSiswa.add(new SiswaBeasiswa("104", "Dewi Sartika", "Jl. Kenanga No. 19", "XI-B", 1500000));
+        this.daftarSiswa.add(new SiswaBeasiswa("105", "Eko Prasetyo", "Jl. Cempaka No. 3", "XII-A", 2000000));
     }
 
-    @Override
-    public void ubahSiswa(String nis, String namaBaru) {
-        boolean ditemukan = false;
-        for (Siswa s : daftarSiswa) {
-            if (s.getNis().equals(nis)) {
-                s.setNama(namaBaru); 
-                ditemukan = true;
-                break;
-            }
-        }
-        if (!ditemukan) {
-            System.out.println("Siswa dengan NIS " + nis + " tidak ditemukan.");
-        }
+    public ArrayList<Siswa> getDaftarSiswa() {
+        return daftarSiswa;
     }
 
-    @Override
-    public void hapusSiswa(String nis) {
-        boolean berhasilHapus = daftarSiswa.removeIf(s -> s.getNis().equals(nis));
-        if (!berhasilHapus) {
-            System.out.println("Siswa dengan NIS " + nis + " tidak ditemukan.");
-        }
-    }
-
-    @Override
-    public void tampilSemuaSiswa() {
-        System.out.println("\nData Siswa " + namaSekolah);
-        if (daftarSiswa.isEmpty()) {
-            System.out.println("Belum ada data siswa.");
-            return;
-        }
-        for (Siswa s : daftarSiswa) {
-            s.tampilInfo();
-        }
+    public String getNamaSekolah() {
+        return namaSekolah;
     }
 }
